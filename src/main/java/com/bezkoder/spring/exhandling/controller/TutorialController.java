@@ -67,21 +67,21 @@ public class TutorialController {
     _tutorial.setTitle(tutorial.getTitle());
     _tutorial.setDescription(tutorial.getDescription());
     _tutorial.setPublished(tutorial.isPublished());
-    
+
     return new ResponseEntity<>(tutorialRepository.save(_tutorial), HttpStatus.OK);
   }
 
   @DeleteMapping("/tutorials/{id}")
   public ResponseEntity<HttpStatus> deleteTutorial(@PathVariable("id") long id) {
     tutorialRepository.deleteById(id);
-    
+
     return new ResponseEntity<>(HttpStatus.NO_CONTENT);
   }
 
   @DeleteMapping("/tutorials")
   public ResponseEntity<HttpStatus> deleteAllTutorials() {
     tutorialRepository.deleteAll();
-    
+
     return new ResponseEntity<>(HttpStatus.NO_CONTENT);
   }
 
@@ -92,7 +92,7 @@ public class TutorialController {
     if (tutorials.isEmpty()) {
       return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-    
+
     return new ResponseEntity<>(tutorials, HttpStatus.OK);
   }
 
